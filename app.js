@@ -17,10 +17,24 @@ function getQuote() {
         });
 }
 
+function getJoke() {
+    return fetch("https://official-joke-api.appspot.com/random_joke")
+        .then((res) => {
+            return res.json();
+        })
+        .then((data) => {
+            return data["setup"] + " " + data["punchline"];
+        });
+}
+
 client.on("message", (msg) => {
     //commands
     if (msg.content === "/commands") {
-        msg.channel.send("\n/ping - replies 'pong'\n" + "/inspire - gives you a motivational quote\n");
+        msg.channel.send(
+            "\n/ping - replies 'pong'\n" +
+                "/inspire - gives you a motivational quote\n" +
+                "/joke - tells you a joke!\n",
+        );
     }
     //ping pong
     if (msg.content === "/ping") {
@@ -32,12 +46,18 @@ client.on("message", (msg) => {
     if (msg.content === "/inspire") {
         getQuote().then((quote) => msg.channel.send(quote));
     }
-    //self-destruct
-    if (msg.content === "/destruct") {
+
+    //jokes
+    if (msg.content === "/joke") {
+        getJoke().then((joke) => msg.channel.send(joke));
+    }
+
+    //self-destruct msg.channel.send(`explosion in ${i}`);
+    if (msg.content === "/boom") {
         for (i = 5; i >= 0; i--) {
             if (i > 0) {
-                msg.channel.send(`explosion in ${i}`);
-            } else msg.channel.send("boom");
+                console.log(`explosion in ${i}`);
+            } else console.log("boom");
         }
     }
 });
