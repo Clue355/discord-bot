@@ -18,32 +18,27 @@ function getQuote() {
 }
 
 client.on("message", (msg) => {
+    //commands
     if (msg.content === "/commands") {
         msg.channel.send("\n/ping - replies 'pong'\n" + "/inspire - gives you a motivational quote\n");
     }
-});
+    //ping pong
+    if (msg.content === "/ping") {
+        msg.channel.send("pong");
+    }
 
-client.on("message", (msg) => {
+    //quotes
     if (msg.author.bot) return;
-
     if (msg.content === "/inspire") {
         getQuote().then((quote) => msg.channel.send(quote));
     }
-});
-
-client.on("message", (msg) => {
+    //self-destruct
     if (msg.content === "/destruct") {
         for (i = 5; i >= 0; i--) {
             if (i > 0) {
-                msg.channel.send(`count down in ${i}`);
+                msg.channel.send(`explosion in ${i}`);
             } else msg.channel.send("boom");
         }
-    }
-});
-
-client.on("message", (msg) => {
-    if (msg.content === "/ping") {
-        msg.channel.send("pong");
     }
 });
 
