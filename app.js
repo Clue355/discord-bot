@@ -32,8 +32,9 @@ client.on("message", (msg) => {
     if (msg.content === "/commands") {
         msg.channel.send(
             "\n/ping - replies 'pong'\n" +
-                "/inspire - gives you a motivational quote\n" +
-                "/joke - tells you a joke!\n",
+                "/insp - gives you a motivational quote\n" +
+                "/joke - tells you a joke!\n" +
+                "/boom - create an explosion",
         );
     }
     //ping pong
@@ -43,7 +44,7 @@ client.on("message", (msg) => {
 
     //quotes
     if (msg.author.bot) return;
-    if (msg.content === "/inspire") {
+    if (msg.content === "/insp") {
         getQuote().then((quote) => msg.channel.send(quote));
     }
 
@@ -52,12 +53,20 @@ client.on("message", (msg) => {
         getJoke().then((joke) => msg.channel.send(joke));
     }
 
-    //self-destruct msg.channel.send(`explosion in ${i}`);
+    //explosion
     if (msg.content === "/boom") {
-        for (i = 5; i >= 0; i--) {
-            if (i > 0) {
-                console.log(`explosion in ${i}`);
-            } else console.log("boom");
+        i = 3;
+
+        let time = setInterval(countdown, 1000);
+
+        function countdown() {
+            msg.channel.send(`explosion in ${i}`);
+            i--;
+            if (i == 0) {
+                msg.channel.send("https://thumbs.gfycat.com/KindSerpentineCuckoo-size_restricted.gif");
+                clearInterval(time);
+                return;
+            }
         }
     }
 });
