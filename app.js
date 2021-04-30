@@ -27,23 +27,40 @@ function getJoke() {
         });
 }
 
+function jobquery(first, second, third) {
+    return fetch("");
+}
+
 client.on("message", (msg) => {
+    if (msg.author.bot) return;
     //commands
     if (msg.content === "/commands") {
         msg.channel.send(
             "\n/ping - replies 'pong'\n" +
                 "/insp - gives you a motivational quote\n" +
                 "/joke - tells you a joke!\n" +
-                "/boom - create an explosion",
+                "/boom - create an explosion\n" +
+                "/hi - the bot will greet you\n" +
+                "/?jobs - for instructions on the job command",
         );
     }
+
+    //jobs
+    if (msg.content === "/?jobs") {
+        msg.channel.send("pong");
+    }
+
+    //greeting
+    if (msg.content === "/hi") {
+        msg.reply("Hi!");
+    }
+
     //ping pong
     if (msg.content === "/ping") {
         msg.channel.send("pong");
     }
 
     //quotes
-    if (msg.author.bot) return;
     if (msg.content === "/insp") {
         getQuote().then((quote) => msg.channel.send(quote));
     }
@@ -68,6 +85,16 @@ client.on("message", (msg) => {
                 return;
             }
         }
+    }
+
+    let word = "/jobs";
+    if (msg.content.includes(word)) {
+        let string = msg.content;
+        let first_arg = string.match(/\Wjobs\s(\w+)\s/);
+        let sec_arg = string.match(/\Wjobs\s\w+\s(\d+)/);
+        let th_arg = string.match(/\Wjobs\s\w+\s\d+\s([a-zA-z ]+)/);
+        console.log(first_arg[1], sec_arg[1], th_arg[1]);
+        // jobquery(first_arg[1], sec_arg[1], th_arg[1]);
     }
 });
 
