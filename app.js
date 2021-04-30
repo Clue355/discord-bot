@@ -47,7 +47,7 @@ client.on("message", (msg) => {
 
     //jobs
     if (msg.content === "/?jobs") {
-        msg.channel.send("pong");
+        msg.channel.send("command: /jobs job_type category limit");
     }
 
     //greeting
