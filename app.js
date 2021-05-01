@@ -27,8 +27,20 @@ function getJoke() {
         });
 }
 
-function jobquery(first, second, third) {
-    return fetch("");
+function jobquery(cat, limit, msg) {
+    return fetch(`https://remotive.io/api/remote-jobs?category=${cat}&limit=${limit}`).then((res) => {
+        return res.json().then((data) => {
+            return msg.channel.send(
+                `**Title:** ${jobs[i].title}\n` +
+                    `**Company:** ${jobs[i].company_name}\n` +
+                    `**Job Type:** ${jobs[i].job_type}\n` +
+                    `**Location:** ${jobs[i].candidate_required_location}\n` +
+                    `**Salary:** ${jobs[i].salary}\n` +
+                    `**Description:** ${jobs[i].description.match(regex)}\n` +
+                    `**Link:** ${jobs[i].description.match(linkRegex)}\n`,
+            );
+        });
+    });
 }
 
 client.on("message", (msg) => {
@@ -36,18 +48,24 @@ client.on("message", (msg) => {
     //commands
     if (msg.content === "/commands") {
         msg.channel.send(
-            "\n/ping - replies 'pong'\n" +
-                "/insp - gives you a motivational quote\n" +
-                "/joke - tells you a joke!\n" +
-                "/boom - create an explosion\n" +
-                "/hi - the bot will greet you\n" +
-                "/?jobs - for instructions on the job command",
+            "\n**/ping:** *replies 'pong'*\n" +
+                "**/insp:** *gives you a motivational quote*\n" +
+                "**/joke:** *tells you a joke!*\n" +
+                "**/boom:** *create an explosion*\n" +
+                "**/hi:** *the bot will greet you*\n" +
+                "**/?jobs:** *for instructions on the job command*",
         );
     }
 
     //jobs
     if (msg.content === "/?jobs") {
-        msg.channel.send("command: /jobs job_type category limit");
+        msg.channel.send(
+            "**command:** `/jobs category limit`\n" +
+                "> Please replace the paramaters after jobs with your preferences\n" +
+                "> and include 1 space inbetween. ***All jobs are remote!***\n" +
+                "**catergory:** *software-dev, design, data, devops, qa, all-others*\n" +
+                "**limit:** *number of posts you want return. please just give a number. Limit is 10*",
+        );
     }
 
     //greeting
@@ -89,12 +107,30 @@ client.on("message", (msg) => {
 
     let word = "/jobs";
     if (msg.content.includes(word)) {
+        // const channel = if(ch.name === "bot-job-search";
+        let chan = "837178956478152714";
+        if (chan != msg.channel.id) {
+            msg.channel.send("> sorry, can't in this channel.\n> try this in **bot-job-search**");
+            return;
+        }
+
         let string = msg.content;
-        let first_arg = string.match(/\Wjobs\s(\w+)\s/);
-        let sec_arg = string.match(/\Wjobs\s\w+\s(\d+)/);
-        let th_arg = string.match(/\Wjobs\s\w+\s\d+\s([a-zA-z ]+)/);
-        console.log(first_arg[1], sec_arg[1], th_arg[1]);
-        // jobquery(first_arg[1], sec_arg[1], th_arg[1]);
+        let split_string = string.split(" ");
+        let regex = new RegExp(/>([a-zA-Z:’%,. -]+)</);
+        let linkRegex = new RegExp(/>(https:\W+[a-z.]+\W[a-zA-Z0-9]+)</);
+        let categories = ["software-dev", "design", "data", "devops", "qa", "all-others"];
+        if (!split_string[1] in categories) return;
+        if (isNaN(split_string[2]) || split_string[2] > 10) return;
+        jobquery(split_string[1], split_string[2], msg.channel);
+        // msg.channel.send(
+        //     `**Title:** ${jobs[i].title}\n` +
+        //         `**Company:** ${jobs[i].company_name}\n` +
+        //         `**Job Type:** ${jobs[i].job_type}\n` +
+        //         `**Location:** ${jobs[i].candidate_required_location}\n` +
+        //         `**Salary:** ${jobs[i].salary}\n` +
+        //         `**Description:** ${jobs[i].description.match(regex)}\n` +
+        //         `**Link:** ${jobs[i].description.match(linkRegex)}\n`,
+        // );
     }
 });
 
