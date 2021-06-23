@@ -43,7 +43,7 @@ function jobquery(cat, limit, msg) {
     });
 }
 
-client.on("message", (msg) => {
+client.on("message", async (msg) => {
     if (msg.author.bot) return;
     //commands
     if (msg.content === "/commands") {
@@ -53,6 +53,7 @@ client.on("message", (msg) => {
                 "**/joke:** *tells you a joke!*\n" +
                 "**/boom:** *create an explosion*\n" +
                 "**/hi:** *the bot will greet you*\n" +
+                "**/goh:** *gif of scorpion*\n" +
                 "**/?jobs:** *for instructions on the job command*",
         );
     }
@@ -88,14 +89,21 @@ client.on("message", (msg) => {
         getJoke().then((joke) => msg.channel.send(joke));
     }
 
+    // coh
+    if (msg.content === "/goh") {
+        getJoke().then((joke) => msg.channel.send("https://media4.giphy.com/media/rIa2LxrCKxMz3oOEtH/giphy.gif"));
+    }
+
     //explosion
     if (msg.content === "/boom") {
         i = 3;
 
         let time = setInterval(countdown, 1000);
-
         function countdown() {
             msg.channel.send(`explosion in ${i}`);
+            if (i < 0) {
+                clearInterval(time);
+            }
             i--;
             if (i == 0) {
                 msg.channel.send("https://thumbs.gfycat.com/KindSerpentineCuckoo-size_restricted.gif");

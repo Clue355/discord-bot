@@ -2,10 +2,10 @@
     "name": "discord-bot",
     "version": "1.0.0",
     "description": "",
-    "main": "app.js",
+    "main": "./prod/index.js",
     "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1",
-        "start": "node app.js"
+        "build": "tsc",
+        "start": "node -r dotenv/config ./prod/index.js"
     },
     "repository": {
         "type": "git",
@@ -19,6 +19,11 @@
     "homepage": "https://github.com/Clue355/discord-bot#readme",
     "dependencies": {
         "discord.js": "^12.5.3",
-        "dotenv": "^8.2.0"
+        "dotenv": "^8.2.0",
+        "mongoose": "^5.12.14"
+    },
+    "devDependencies": {
+        "@types/node": "^15.12.4",
+        "typescript": "^4.3.4"
     }
 }
