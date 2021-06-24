@@ -3,7 +3,6 @@
     "version": "1.0.0",
     "description": "",
     "main": "./prod/index.js",
-    "type": "module",
     "scripts": {
         "build": "tsc",
         "start": "node -r dotenv/config ./prod/index.js"
