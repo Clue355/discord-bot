@@ -16,6 +16,7 @@ export const onMessage = async (message: Message) => {
             await Command.run(message);
             break;
         }
+        return;
     }
     console.log(message.content);
 };

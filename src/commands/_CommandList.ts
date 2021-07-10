@@ -4,5 +4,6 @@ import { view } from "./view";
 import { edit } from "./edit";
 import { help } from "./help";
 import { sub } from "./subtract";
+// import { quotes } from "./quotes";
 
 export const CommandList: CommandInt[] = [oneHundred, view, edit, sub, help];

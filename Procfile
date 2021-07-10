@@ -1,1 +1,1 @@
-worker: npm run start
+worker: node -r dotenv/config ./prod/index.js
