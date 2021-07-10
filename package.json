@@ -20,10 +20,9 @@
     "dependencies": {
         "discord.js": "^12.5.3",
         "dotenv": "^8.2.0",
-        "mongoose": "^5.12.14"
-    },
-    "devDependencies": {
+        "mongoose": "^5.12.14",
         "@types/node": "^15.12.4",
         "typescript": "^4.3.4"
-    }
+    },
+    "devDependencies": {}
 }
