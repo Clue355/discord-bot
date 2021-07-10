@@ -5,7 +5,7 @@
     "main": "./prod/index.js",
     "scripts": {
         "build": "tsc",
-        "start": "node -r dotenv/config ./prod/index.js"
+        "start": "node -r ./prod/index.js"
     },
     "repository": {
         "type": "git",
