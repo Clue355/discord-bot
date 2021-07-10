@@ -1,1 +1,1 @@
-worker: node -r dotenv/config ./prod/index.js
+web: node -r dotenv/config ./prod/index.js
