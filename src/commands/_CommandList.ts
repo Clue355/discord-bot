@@ -6,4 +6,4 @@ import { help } from "./help";
 import { sub } from "./subtract";
 // import { quotes } from "./quotes";
 
-export const CommandList: CommandInt[] = [oneHundred, view, edit, sub, help];
+export const CommandList: CommandInt[] = [view, oneHundred, edit, sub, help];
