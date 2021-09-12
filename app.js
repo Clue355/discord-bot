@@ -130,15 +130,15 @@
 //         if (!split_string[1] in categories) return;
 //         if (isNaN(split_string[2]) || split_string[2] > 10) return;
 //         jobquery(split_string[1], split_string[2], msg.channel);
-//         // msg.channel.send(
-//         //     `**Title:** ${jobs[i].title}\n` +
-//         //         `**Company:** ${jobs[i].company_name}\n` +
-//         //         `**Job Type:** ${jobs[i].job_type}\n` +
-//         //         `**Location:** ${jobs[i].candidate_required_location}\n` +
-//         //         `**Salary:** ${jobs[i].salary}\n` +
-//         //         `**Description:** ${jobs[i].description.match(regex)}\n` +
-//         //         `**Link:** ${jobs[i].description.match(linkRegex)}\n`,
-//         // );
+//*         // msg.channel.send(
+//*         //     `**Title:** ${jobs[i].title}\n` +
+//*         //         `**Company:** ${jobs[i].company_name}\n` +
+//*         //         `**Job Type:** ${jobs[i].job_type}\n` +
+//*         //         `**Location:** ${jobs[i].candidate_required_location}\n` +
+//*         //         `**Salary:** ${jobs[i].salary}\n` +
+//*         //         `**Description:** ${jobs[i].description.match(regex)}\n` +
+//*         //         `**Link:** ${jobs[i].description.match(linkRegex)}\n`,
+//*         // );
 //     }
 // });
 

@@ -5,7 +5,7 @@ export const onMessage = async (message: Message) => {
     if (message.author.bot) {
         return;
     }
-    const prefix = "/";
+    const prefix = "|";
 
     if (!message.content.startsWith(prefix)) {
         return;
