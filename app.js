@@ -59,12 +59,16 @@ client.on("interactionCreate", async (interaction) => {
 
     //quotes
     if (commandName === "insp") {
-        await getQuote().then((quote) => interaction.reply(quote));
+        await getQuote()
+            .then((quote) => interaction.reply(quote))
+            .catch((err) => console.log(err));
     }
 
     //jokes
     if (commandName === "joke") {
-        await getJoke().then((joke) => interaction.reply(joke));
+        await getJoke()
+            .then((joke) => interaction.reply(joke))
+            .catch((err) => console.log(err));
     }
 
     //explosion
