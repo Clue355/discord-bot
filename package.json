@@ -9,7 +9,7 @@
     "repository": "git@github.com:Clue355/discord-bot.git",
     "author": "Your Name <you@example.com>",
     "scripts": {
-        "start": "node ./app.js"
+        "start": "node app.js"
     },
     "license": "MIT",
     "dependencies": {

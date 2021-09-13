@@ -1,4 +1,3 @@
-require("./server/server/app.js");
 require("dotenv").config();
 const { Client, Intents } = require("discord.js");
 const client = new Client({ intents: [Intents.FLAGS.GUILDS] });
@@ -18,7 +17,7 @@ async function getQuote() {
 // return fetch("https://zenquotes.io/api/random")
 // .then((res) => {
 //     return res.json();
-// })
+// })        "prestart": "npm install",
 // .then((data) => {
 //     return data[0]["q"] + " -" + data[0]["a"];
 // });
