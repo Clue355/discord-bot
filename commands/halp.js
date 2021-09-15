@@ -10,7 +10,8 @@ module.exports = {
             .addField("/ping", "Replies with pong!", true)
             .addField("/hi", "Replies with Hi!", true)
             .addField("/insp", "Replies with an inspirational quote", true)
-            .addField("/joke", "Replies with a programming joke", true);
+            .addField("/joke", "Replies with a programming joke", true)
+            .addField("/roles", "Replies with roles you can assign yourself", true);
         await interaction.reply({ embeds: [commandEmb] });
     },
 };

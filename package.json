@@ -3,7 +3,7 @@
     "version": "1.0.0",
     "engines": {
         "node": "16.9.1",
-        "npm": "7.16.0"
+        "npm": "7.21.1"
     },
     "main": "app.js",
     "repository": "git@github.com:Clue355/discord-bot.git",
