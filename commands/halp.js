@@ -11,7 +11,8 @@ module.exports = {
             .addField("/hi", "Replies with Hi!", true)
             .addField("/insp", "Replies with an inspirational quote", true)
             .addField("/joke", "Replies with a programming joke", true)
-            .addField("/roles", "Replies with roles you can assign yourself", true);
+            .addField("/roles", "Replies with roles you can assign yourself", true)
+            .addField("/meme", "Replies with dankmemes", true);
         await interaction.reply({ embeds: [commandEmb] });
     },
 };
